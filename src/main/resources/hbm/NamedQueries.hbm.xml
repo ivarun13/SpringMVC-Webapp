@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+          
+          
+<hibernate-mapping>
+
+    <sql-query name="file.search">
+        <return class="csjobs.model.File" />
+<![CDATA[
+select * from files where plainto_tsquery(:term) @@ tsv
+]]>
+    </sql-query>
+    
+    </hibernate-mapping>          
